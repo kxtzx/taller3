@@ -1,0 +1,1 @@
+001,500000,2,nylon,null,6,madera,electrica
