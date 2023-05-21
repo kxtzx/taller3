@@ -91,11 +91,11 @@ class Viento {
 
 
 }
-Main --> SistemaInventario : utiliza
-SistemaImpl ..|> SistemaInventario : implementa
-Cuerda --|> Instrumento : hereda
-Percusion --|> Instrumento : hereda
-Viento --|> Instrumento : hereda
-ListaInstrumento --> Instrumento : utiliza
-SistemaImpl --> ListaInstrumento : utiliza
+Main "1" -> "1" sistemaInventario : utiliza
+sistemaImpl "1" .|> "1" sistemaInventario : implementa
+Cuerda "1..*" ---|> "1..*" Instrumento : hereda
+Percusion "1..*" ---|> "1..*" Instrumento : hereda
+Viento "1..*" --|> "1..*" Instrumento : hereda
+listaInstrumento "1" --> "1" Instrumento : utiliza
+sistemaImpl "1" ---> "1" listaInstrumento : utiliza
 @enduml
