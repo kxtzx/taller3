@@ -9,15 +9,29 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Implementación de la interfaz SistemaInventario.
+ * Representa un sistema de inventario de instrumentos.
+ */
+
 public class SistemaImpl implements SistemaInventario {
     private ListaInstrumento listaInstrumentos;
 
+    /**
+     * Constructor de la clase SistemaImpl.
+     * Inicializa la lista de instrumentos con una capacidad inicial de 500 elementos.
+     */
     public SistemaImpl() {
         this.listaInstrumentos = new ListaInstrumento(500);
     }
 
 
 
+    /**
+     * Genera un archivo de inventario en formato de texto a partir de los datos de los instrumentos almacenados en la lista.
+     *
+     * @throws IOException si se produce un error durante la escritura del archivo de inventario.
+     */
     @Override
     public void inventario() throws IOException {
         ArchivoSalida archivoSalida = new ArchivoSalida("inventario.txt");
@@ -63,6 +77,11 @@ public class SistemaImpl implements SistemaInventario {
         }
     }
 
+    /**
+     * Lee los datos de los instrumentos de un archivo CSV y los almacena en la lista de instrumentos.
+     *
+     * @throws IOException si se produce un error durante la lectura del archivo.
+     */
     @Override
     public void leerArchivos() throws IOException {
         ArchivoEntrada archivoEntrada = new ArchivoEntrada("csv_prueba.csv");
@@ -118,6 +137,9 @@ public class SistemaImpl implements SistemaInventario {
         }
     }
 
+    /**
+     * Muestra el menú principal del sistema y maneja las opciones seleccionadas por el usuario.
+     */
     @Override
     public void menu() {
         String opcion = null;
@@ -144,6 +166,9 @@ public class SistemaImpl implements SistemaInventario {
         }
     }
 
+    /**
+     * Agrega un nuevo instrumento al inventario.
+     */
     private void agregarInstrumento() {
         StdOut.println("Agregar Instrumento");
         StdOut.print("Ingrese el ID del instrumento: ");
@@ -193,6 +218,9 @@ public class SistemaImpl implements SistemaInventario {
         }
     }
 
+    /**
+     * Vende un instrumento del inventario.
+     */
 
     private void venderInstrumento() {
         if (listaInstrumentos.getCantActual() == 0) {
@@ -219,6 +247,12 @@ public class SistemaImpl implements SistemaInventario {
        
     }
 
+    /**
+     * Realiza la venta de un instrumento, reduciendo la cantidad disponible y generando una boleta de venta.
+     *
+     * @param instrumento el instrumento a vender.
+     */
+
     private void realizarVenta(Instrumento instrumento) {
         // Reducir la cantidad de instrumentos disponibles
         instrumento.setCantidad(instrumento.getCantidad() - 1);
@@ -227,11 +261,16 @@ public class SistemaImpl implements SistemaInventario {
         generarBoleta(instrumento);
     }
 
+    /**
+     * Genera una boleta de venta para un instrumento vendido.
+     *
+     * @param instrumento el instrumento vendido.
+     */
     private void generarBoleta(Instrumento instrumento) {
         Date fechaActual = new Date();
 
         // DIA, FECHA, AÑO
-        SimpleDateFormat dateFormat = new SimpleDateFormat("DD/MM/YYYY");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
         String fechaFormateada = dateFormat.format(fechaActual);
 
         StdOut.println("------ Boleta de Venta ------");
@@ -241,6 +280,9 @@ public class SistemaImpl implements SistemaInventario {
         StdOut.println("-----------------------------");
     }
 
+    /**
+     * Consulta el inventario y muestra los instrumentos disponibles.
+     */
     private void consultarInvetario() {
         if (listaInstrumentos.getCantActual() == 0) {
             StdOut.println("El inventario está vacío. No hay instrumentos disponibles.");
@@ -258,14 +300,18 @@ public class SistemaImpl implements SistemaInventario {
         }
     }
 
+    /**
+     * Realiza el cierre de sesión en el sistema de inventario.
+     * Guarda el inventario en un archivo y muestra un mensaje de despedida.
+     */
     private void cierre() {
         try {
             inventario();
 
             StdOut.println("¡Cierre de sesión en el sistema de inventario de Beat the Rhythm!");
-            StdOut.println("Gracias por utilizar nuestro sistema, esperamos haber cumplido todas tus necesidades musicales.");
-            StdOut.println("Recuerda que en Beat the Rhythm siempre estamos listos para ayudarte a encontrar el instrumento perfecto.");
-            StdOut.println("¡Rockea con todo tu corazón y no olvides seguir tu pasión por la música!");
+            StdOut.println("Gracias por utilizar nuestro sistema, esperamos haber facilitado tus tareas.");
+            StdOut.println("Recuerda que en Beat the Rhythm siempre estamos listos para ayudarte a encontrar el instrumento perfecto para tus clientes.");
+            StdOut.println("¡Sigue brindando el mejor servicio y asesoramiento musical a cada persona que entre en la tienda!");
             StdOut.println("¡Hasta la próxima! (＾▽＾)");
 
 

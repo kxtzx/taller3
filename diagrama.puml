@@ -1,0 +1,101 @@
+@startuml
+class Main {
+
++ main(args: String[]) : void
+
+}
+
+
+class Cuerda {
+
+-instrumento : String
+-tipoCuerda : String
+-cantCuerdas : int
+-material : String
+-tipo : String
+
++Cuerda (id : String ; precio : int ; cantidad : int ; instrumento : String ; instrumento1 : String , cantCuerdas : int , material : String , tipo : String)
++gets()
++sets()
+
+}
+
+class Instrumento {
+
+-id : String
+-cantidad : id
+-instrumento : String
+
++instrumento(id : String ; precio : int ; cantidad ; instrumento : String)
++gets()
++sets()
+
+}
+
+class ListaInstrumento {
+
+-instrumento : Instrumento[]
+-cantActual : int
+-cantMax : int
+
++listaInstrumento(int : max)
++ingresarInstrumento(instrumento : Instrumento) : void
++instrumentoEnPosicion(i : int) : instrumento
++gets()
++sets()
+
+}
+
+class Percusion {
+
+-tipoPercusion : String
+-material : String
+-altura : String
++percusion(id : String ; precio : int ; instrumento : String ; tipoPercusion : String ; material : String ; altura : String)
++gets()
++sets()
+
+}
+
+class SistemaImpl {
+
+-listaInstrumento ListaInstrumentos
+
++sistemaImpl()
++inventario() : void
++leerArchivos() : void
+-agregarInstrumento() : void
+-venderInstrumento() : void
+-realizarVenta(instrumento : Instrumento) : void
+-generarBoleta(instrumento : Instrumento) : void
+-consultarInventario() : void
+-cierre() : void
+
+
+}
+
+interface SistemaInventario {
++inventario() : void
++leerArchivos() : void
++menu() : void
+
+}
+
+class Viento {
+
+-material : String
+
++Viento(id : String ; precio : int ; cantidad : int ; instrumento : String ; material : String)
++gets()
++sets()
+
+
+}
+Main --> SistemaInventario : utiliza
+SistemaImpl ..|> SistemaInventario : implementa
+Cuerda --|> Instrumento : hereda
+Percusion --|> Instrumento : hereda
+Viento --|> Instrumento : hereda
+ListaInstrumento --> Instrumento : utiliza
+SistemaImpl --> ListaInstrumento : utiliza
+@enduml

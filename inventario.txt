@@ -1,1 +1,1 @@
-001,500000,2,nylon,null,6,madera,electrica
+001,2103123,311,nylon,null,10,madera,electrica

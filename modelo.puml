@@ -1,0 +1,28 @@
+@startuml
+class BeatTheRythm {
+
+}
+
+class Cliente {
+
+
+}
+
+class Instrumento {
+Instrumentos de Cuerda
+Instrumentos de Percusión
+Instrumentos de  Viento
+Componentes del Instrumento
+Stock Disponible
+ID
+Precio
+
+
+}
+
+
+
+Cliente "1" --> "1" BeatTheRythm : acude a
+BeatTheRythm "1" -- "1..*" Instrumento : ofrece
+Instrumento "1..*" -- "1..*" Cliente : se vende a
+@enduml
